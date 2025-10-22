@@ -14,7 +14,8 @@ def main():
     dt = 0
 
     player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
-
+    player.update(0)  # Initial update to set state
+    
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -26,6 +27,7 @@ def main():
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS
+        player.update(dt)
 
 if __name__ == "__main__":
     main()
