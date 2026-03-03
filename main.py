@@ -2,6 +2,8 @@ import pygame
 from constants import *
 from logger import log_state
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init()
@@ -21,11 +23,17 @@ def main():
 
     player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
     player.update(0)  # Initial update to set state
+
+    asteroids = pygame.sprite.Group()
+
+    Asteroid.containers = (updatable, drawable, asteroids)
+
+    AsteroidField.containers = (updatable,)
+    asteroid_field = AsteroidField()
     
 
 
     while True:
-        print("calling log_state")
         log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
