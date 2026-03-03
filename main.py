@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from logger import log_state
 from player import Player
 
 def main():
@@ -24,6 +25,8 @@ def main():
 
 
     while True:
+        print("calling log_state")
+        log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -39,8 +42,6 @@ def main():
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS
-        player.update(dt)
-        updatable.update(dt)
 
 if __name__ == "__main__":
     main()
